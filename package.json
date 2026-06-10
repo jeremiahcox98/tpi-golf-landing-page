@@ -1,0 +1,11 @@
+{
+  "name": "tpi-golf-landing-page",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TPI Golf Screen + Chiropractic landing page for Dr. Jeremiah Cox",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static site — no build step required'",
+    "deploy": "npx wrangler pages deploy . --project-name=tpi-golf-landing-page"
+  }
+}
