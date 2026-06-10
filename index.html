@@ -380,7 +380,7 @@ h2.title{font-size:clamp(30px,5vw,52px);font-weight:800}
   display:inline-flex;align-items:center;justify-content:center;gap:12px;
   font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:.01em;
   padding:18px 30px;border:none;border-radius:999px;
-  background:var(--gold);color:#1a1206;
+  background:var(--gold);color:#1a1206;text-decoration:none;
   transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
   box-shadow:0 14px 30px -12px rgba(177,137,76,.6);
   white-space:nowrap;
@@ -416,18 +416,24 @@ h2.title{font-size:clamp(30px,5vw,52px);font-weight:800}
   z-index:0;
 }
 .hero__in{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;max-width:940px;margin:0 auto;
-  padding-top:clamp(30px,4.5vw,58px);padding-bottom:clamp(44px,6vw,76px)}
-.hero__eyebrow{display:inline-flex;align-items:center;gap:11px;font-family:var(--display);font-weight:700;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--navy);margin-bottom:18px}
-.hero__eyebrow .stars{display:inline-flex;gap:2px;color:#e7b53d}
-.hero__eyebrow .stars svg{width:15px;height:15px}
-.hero__eyebrow .sep{color:var(--gold);font-weight:800}
+  padding-top:clamp(24px,3.5vw,48px);padding-bottom:clamp(44px,6vw,76px)}
+.hero__trust{
+  display:inline-flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;
+  margin:0 0 20px;font-family:var(--display);font-weight:700;font-size:12.5px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--navy);
+}
+.hero__trust-stars{color:#e7b53d;letter-spacing:.08em}
+.hero__trust .sep{color:var(--gold);font-weight:800}
 .hero h1{font-size:clamp(33px,5.3vw,62px);font-weight:800;letter-spacing:-.028em;max-width:17ch}
 .hero h1 .hl{color:var(--gold)}
 .hero__sub{font-size:clamp(16.5px,1.7vw,20px);color:var(--muted);margin:22px auto 0;max-width:640px;text-wrap:pretty}
+.hero__cta{margin-top:clamp(26px,3.5vw,34px);display:flex;flex-direction:column;align-items:center;width:100%;max-width:520px}
+.hero__cta .btn{width:100%;max-width:440px;flex-direction:column;gap:6px;padding:20px 32px;line-height:1.2;white-space:normal}
+.hero__cta .btn__main{display:block;font-size:clamp(17px,2.2vw,19px);letter-spacing:.01em}
+.hero__cta .btn__sub{display:block;font-size:13px;font-weight:600;letter-spacing:.04em;opacity:.88;text-transform:none}
 .hero__vsl{width:100%;max-width:880px;margin:clamp(28px,4vw,42px) auto 0;position:relative}
 .hero__vsl::before{content:"";position:absolute;inset:-30px -20px;border-radius:30px;background:radial-gradient(60% 55% at 50% 42%,rgba(177,137,76,.30),transparent 72%);z-index:0;filter:blur(6px)}
 .hero__vsl .vsl{position:relative;z-index:1}
-.hero__cta{margin-top:clamp(26px,3.5vw,38px);display:flex;flex-direction:column;align-items:center;width:100%}
 .hero__support{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:20px;font-size:13.5px;color:var(--muted);font-weight:500}
 .hero__support .dot{width:4px;height:4px;border-radius:50%;background:var(--gold)}
 
@@ -667,7 +673,7 @@ h2.title{font-size:clamp(30px,5vw,52px);font-weight:800}
 /* ============================================================
    Footer
    ============================================================ */
-.foot{background:var(--navy-deep);color:#9fb0bd;padding:64px 0 120px}
+.foot{background:var(--navy-deep);color:#9fb0bd;padding:64px 0 48px}
 .foot__in{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;align-items:start}
 .foot__logo{height:60px;width:auto;filter:invert(1) brightness(2);margin-bottom:18px}
 .foot__col h4{font-family:var(--display);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-bottom:16px}
@@ -675,18 +681,38 @@ h2.title{font-size:clamp(30px,5vw,52px);font-weight:800}
 .foot__col a:hover{color:var(--gold-bright)}
 .foot__bottom{margin-top:48px;padding-top:26px;border-top:1px solid var(--line-dark);display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:13px;color:#6d7c89}
 .foot__disc{max-width:640px;font-size:12.5px;color:#5f6e7b;line-height:1.6;margin-top:18px}
-@media(max-width:780px){.foot__in{grid-template-columns:1fr;gap:32px}.foot{padding-bottom:130px}}
+@media(max-width:780px){.foot__in{grid-template-columns:1fr;gap:32px}}
 
 /* ============================================================
-   Sticky mobile CTA
+   Sticky phone header
    ============================================================ */
-.mobile-cta{position:fixed;left:0;right:0;bottom:0;z-index:70;display:none;gap:10px;padding:12px 14px;
-  background:rgba(12,27,40,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line-dark);
-  box-shadow:0 -10px 30px -16px rgba(0,0,0,.6)}
-.mobile-cta .btn{flex:1;padding:16px;font-size:15.5px}
-.mobile-cta .call{flex:0 0 auto;width:54px;border-radius:14px;background:var(--navy);color:#fff;display:grid;place-items:center;border:1px solid var(--line-dark)}
-.mobile-cta .call svg{width:22px;height:22px;color:var(--gold-bright)}
-@media(max-width:760px){.mobile-cta{display:flex}}
+.site-bar{
+  position:fixed;top:0;left:0;right:0;z-index:80;
+  background:rgba(12,27,40,.97);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line-dark);
+  box-shadow:0 8px 28px -12px rgba(0,0,0,.45);
+}
+.site-bar__in{
+  display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;
+  padding:11px var(--pad);max-width:var(--maxw);margin:0 auto;
+}
+.site-bar__txt{font-size:13px;color:#aebac4;font-weight:500;letter-spacing:.01em}
+.site-bar__phone{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--display);font-weight:800;font-size:15.5px;letter-spacing:.02em;
+  color:#fff;padding:8px 16px;border-radius:999px;
+  background:rgba(177,137,76,.18);border:1px solid rgba(177,137,76,.45);
+  transition:background .18s ease,border-color .18s ease,transform .18s ease;
+}
+.site-bar__phone svg{width:16px;height:16px;color:var(--gold-bright);flex:0 0 auto}
+.site-bar__phone:hover{background:rgba(177,137,76,.28);border-color:rgba(177,137,76,.65);transform:translateY(-1px)}
+body.has-site-bar{padding-top:52px}
+@media(max-width:520px){
+  .site-bar__in{gap:8px;padding:10px 16px}
+  .site-bar__txt{font-size:12px}
+  .site-bar__phone{font-size:14.5px;padding:7px 14px}
+  body.has-site-bar{padding-top:48px}
+}
 
 /* ============================================================
    VSL Modal
@@ -706,6 +732,43 @@ h2.title{font-size:clamp(30px,5vw,52px);font-weight:800}
 .modal__close{position:absolute;top:12px;right:12px;width:42px;height:42px;border-radius:50%;border:none;
   background:rgba(255,255,255,.12);color:#fff;font-size:22px;display:grid;place-items:center;z-index:2}
 .modal__close:hover{background:rgba(255,255,255,.22)}
+.modal__box--form{width:min(520px,100%);background:linear-gradient(180deg,#fff,#f7f4ee);color:var(--text);border:1px solid rgba(255,255,255,.6)}
+.modal__box--form .modal__close{background:rgba(19,40,58,.08);color:var(--navy)}
+.modal__box--form .modal__close:hover{background:rgba(19,40,58,.14)}
+.schedule-form{padding:clamp(28px,5vw,40px) clamp(24px,4vw,36px) clamp(32px,5vw,42px)}
+.schedule-form__ey{
+  display:inline-flex;align-items:center;gap:10px;margin:0 0 14px;
+  font-family:var(--display);font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+}
+.schedule-form__ey::before{content:"";width:22px;height:2px;background:var(--gold)}
+.schedule-form h3{
+  margin:0;font-family:var(--display);font-size:clamp(22px,4vw,28px);font-weight:800;
+  line-height:1.15;letter-spacing:-.02em;color:var(--navy);
+}
+.schedule-form__sub{margin:12px 0 0;font-size:15px;color:var(--muted);line-height:1.5;text-wrap:pretty}
+.schedule-form__fields{display:flex;flex-direction:column;gap:14px;margin-top:26px}
+.schedule-form label{display:flex;flex-direction:column;gap:7px;font-size:13px;font-weight:600;color:var(--navy);letter-spacing:.02em}
+.schedule-form input,.schedule-form textarea{
+  width:100%;padding:14px 16px;border-radius:12px;border:1px solid var(--line);
+  background:#fff;font-family:var(--body);font-size:16px;color:var(--text);
+  transition:border-color .18s ease,box-shadow .18s ease;
+}
+.schedule-form input:focus,.schedule-form textarea:focus{
+  outline:none;border-color:rgba(177,137,76,.65);box-shadow:0 0 0 3px rgba(177,137,76,.18);
+}
+.schedule-form textarea{min-height:96px;resize:vertical}
+.schedule-form .btn{margin-top:8px}
+.schedule-form__fine{margin-top:14px;font-size:12.5px;color:var(--muted);text-align:center;line-height:1.45}
+.schedule-form__success{display:none;text-align:center;padding:clamp(36px,6vw,52px) clamp(24px,4vw,36px)}
+.schedule-form__success.is-visible{display:block}
+.schedule-form__success .ic{
+  width:64px;height:64px;margin:0 auto 18px;border-radius:50%;
+  background:rgba(177,137,76,.16);color:var(--gold);display:grid;place-items:center;
+}
+.schedule-form__success .ic svg{width:30px;height:30px}
+.schedule-form__success h3{font-size:24px;margin-bottom:10px}
+.schedule-form__success p{color:var(--muted);font-size:15px;line-height:1.55}
+.schedule-form.is-submitted .schedule-form__body{display:none}
 
 /* ============================================================
    Social proof bar (high up, right under hero)
@@ -754,14 +817,32 @@ h2.title{font-size:clamp(30px,5vw,52px);font-weight:800}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.vsl__play .ring,.cta-trust .spots .pulse{animation:none}}
 </style>
 </head>
-<body>
+<body class="has-site-bar">
+
+<!-- ================= PHONE HEADER ================= -->
+<div class="site-bar">
+  <div class="site-bar__in">
+    <span class="site-bar__txt">Prefer to talk? Call Mason Chiropractic</span>
+    <a class="site-bar__phone" href="tel:16157949155">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      615-794-9155
+    </a>
+  </div>
+</div>
 
 <!-- ================= HERO ================= -->
 <section class="hero">
   <div class="wrap hero__in">
-    <div class="hero__eyebrow reveal"><span class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.4 21.2 6.7 14.2l-5-4.8 7-.9z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.4 21.2 6.7 14.2l-5-4.8 7-.9z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.4 21.2 6.7 14.2l-5-4.8 7-.9z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.4 21.2 6.7 14.2l-5-4.8 7-.9z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.4 21.2 6.7 14.2l-5-4.8 7-.9z"></path></svg></span> Rated 5.0 <span class="sep">·</span> TPI Certified <span class="sep">·</span> Franklin, TN</div>
+    <p class="hero__trust reveal"><span class="hero__trust-stars" aria-hidden="true">★★★★★</span> Rated 5.0 <span class="sep">·</span> TPI Certified <span class="sep">·</span> Franklin, TN</p>
     <h1 class="reveal">Why Your Golf Swing May Be <span class="hl">Limited By Your Body</span></h1>
-    <p class="hero__sub reveal">Most golfers spend thousands on lessons and equipment while overlooking the physical limitations restricting their swing. Watch the 90-second overview — then book your screen.</p>
+    <p class="hero__sub reveal">Most golfers spend thousands on lessons and equipment while overlooking the physical limitations restricting their swing. Find what's holding you back — then fix it.</p>
+    <div class="hero__cta reveal">
+      <button type="button" class="btn btn--lg" data-schedule-open="">
+        <span class="btn__main">Claim Your $75 TPI Screen</span>
+        <span class="btn__sub">$335 value · Limited spots this week</span>
+      </button>
+      <div class="cta-trust"><span class="spots"><span class="pulse"></span>We'll call you to schedule — no online booking required</span></div>
+    </div>
     <div class="hero__vsl reveal">
       <div class="vsl" data-modal-open="" role="button" tabindex="0" aria-label="Play video">
         <img src="/assets/857f6594-9d14-4c81-b96b-89820f3a8acd.jpg" alt="Dr. Jeremiah Cox — TPI Screening &amp; Chiropractic Exam">
@@ -770,10 +851,6 @@ h2.title{font-size:clamp(30px,5vw,52px);font-weight:800}
         <div class="vsl__label"><span class="d"></span>WATCH: 90-SECOND OVERVIEW</div>
         <div class="vsl__time">1:34</div>
       </div>
-    </div>
-    <div class="hero__cta reveal">
-      <a class="btn btn--lg" href="#offer">Book Your $75 TPI Screen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
-      <div class="cta-trust"><span class="spots"><span class="pulse"></span>Limited spots available each week</span></div>
     </div>
     <div class="hero__support reveal"><span>TPI Certified provider</span><span class="dot"></span><span>$335 value — today just $75</span><span class="dot"></span><span>No-pressure evaluation</span></div>
   </div>
@@ -988,7 +1065,7 @@ h2.title{font-size:clamp(30px,5vw,52px);font-weight:800}
       <p>Your $75 New Patient Special includes the full TPI screen, chiropractic evaluation, and a plan built around your game.</p>
     </div>
     <div class="ctaband__act reveal">
-      <a class="btn btn--lg" href="#offer">Book Your $75 TPI Screen</a>
+      <button type="button" class="btn btn--lg" data-schedule-open="">Claim Your $75 TPI Screen</button>
       <div class="cta-trust"><span class="spots"><span class="pulse"></span>Limited spots available each week</span></div>
     </div>
   </div>
@@ -1083,7 +1160,7 @@ h2.title{font-size:clamp(30px,5vw,52px);font-weight:800}
         <span class="lbl">Your investment<br>today</span>
         <span class="amt"><sup>$</sup>75</span>
       </div>
-      <a class="btn btn--block btn--lg" href="#" data-book="">Book Your $75 TPI Screen</a>
+      <button type="button" class="btn btn--block btn--lg" data-schedule-open="">Claim Your $75 TPI Screen</button>
       <div class="pricecard__call">
         <span>Prefer to call?</span>
         <a href="tel:16157949155"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>615-794-9155</a>
@@ -1100,10 +1177,10 @@ h2.title{font-size:clamp(30px,5vw,52px);font-weight:800}
     <span class="eyebrow center" style="color:var(--gold-bright)">Your Best Golf Is Ahead</span>
     <h2>Play Better Golf By Understanding Your Body</h2>
     <p>Find what's limiting your swing — and get a clear, personalized plan to fix it. Your $75 New Patient Special is waiting.</p>
-    <a class="btn btn--lg" href="#" data-book="">
-      Schedule Your $75 TPI Screen
+    <button type="button" class="btn btn--lg" data-schedule-open="">
+      Claim Your $75 TPI Screen
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
-    </a>
+    </button>
     <div class="final__meta">
       <a href="tel:16157949155">615-794-9155</a><span class="dot"></span>
       <span>Mason Chiropractic, Franklin, TN</span>
@@ -1124,7 +1201,7 @@ h2.title{font-size:clamp(30px,5vw,52px);font-weight:800}
         <h4>Visit</h4>
         <p>Mason Chiropractic<br>Franklin, TN</p>
         <a href="tel:16157949155">615-794-9155</a>
-        <a href="#offer">Book the $75 TPI Screen</a>
+        <a href="#" data-schedule-open="">Claim Your $75 TPI Screen</a>
       </div>
       <div class="foot__col">
         <h4>Explore</h4>
@@ -1142,10 +1219,43 @@ h2.title{font-size:clamp(30px,5vw,52px);font-weight:800}
   </div>
 </footer>
 
-<!-- ================= STICKY MOBILE CTA ================= -->
-<div class="mobile-cta">
-  <a class="btn" href="#offer">Book Your $75 TPI Screen</a>
-  <a class="call" href="tel:16157949155" aria-label="Call 615-794-9155"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></a>
+<!-- ================= SCHEDULE MODAL ================= -->
+<div class="modal" id="scheduleModal" aria-hidden="true">
+  <div class="modal__box modal__box--form">
+    <button class="modal__close" type="button" aria-label="Close form" data-schedule-close="">×</button>
+    <div class="schedule-form" id="scheduleFormWrap">
+      <div class="schedule-form__body">
+        <p class="schedule-form__ey">Get Scheduled</p>
+        <h3>Enter your info and we'll give you a call to get you scheduled.</h3>
+        <p class="schedule-form__sub">Share a few details and someone from Mason Chiropractic will reach out shortly to book your $75 TPI Screen.</p>
+        <form id="scheduleForm" class="schedule-form__fields" novalidate="">
+          <label>
+            Name
+            <input type="text" name="name" autocomplete="name" required="" placeholder="First and last name">
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" autocomplete="email" required="" placeholder="you@email.com">
+          </label>
+          <label>
+            Phone number
+            <input type="tel" name="phone" autocomplete="tel" required="" placeholder="(615) 555-0123">
+          </label>
+          <label>
+            Notes to the doctor
+            <textarea name="notes" placeholder="Optional — pain, goals, best time to call, etc."></textarea>
+          </label>
+          <button type="submit" class="btn btn--block btn--lg">Request My Callback</button>
+          <p class="schedule-form__fine">No spam. No pressure. Just a quick call to get you on the schedule.</p>
+        </form>
+      </div>
+      <div class="schedule-form__success" id="scheduleSuccess" aria-live="polite">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></div>
+        <h3>You're on the list.</h3>
+        <p>Thanks — we'll call you shortly to get your $75 TPI Screen scheduled. If you need us sooner, call <a href="tel:16157949155" style="color:var(--navy);font-weight:700">615-794-9155</a>.</p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- ================= VSL MODAL ================= -->

@@ -5,51 +5,135 @@ const io = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
 document.querySelectorAll('.reveal').forEach((el, i) => {
-  // small stagger for siblings within a row
   el.style.transitionDelay = (Math.min(i % 4, 3) * 70) + 'ms';
   io.observe(el);
 });
 
-// ---- VSL modal ----
-const modal = document.getElementById('vslModal');
+// ---- Modals ----
+const vslModal = document.getElementById('vslModal');
 const modalVideo = document.getElementById('modalVideo');
-const originalVideo = modalVideo.innerHTML;
+const originalVideo = modalVideo ? modalVideo.innerHTML : '';
 
-function openModal() {
-  modal.classList.add('open');
-  modal.setAttribute('aria-hidden', 'false');
+const scheduleModal = document.getElementById('scheduleModal');
+const scheduleFormWrap = document.getElementById('scheduleFormWrap');
+const scheduleForm = document.getElementById('scheduleForm');
+const scheduleSuccess = document.getElementById('scheduleSuccess');
+
+// Set to your form endpoint (Formspree, webhook, etc.) to POST submissions.
+const FORM_ENDPOINT = '';
+
+function openVslModal() {
+  if (!vslModal) return;
+  vslModal.classList.add('open');
+  vslModal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
 }
-function closeModal() {
-  modal.classList.remove('open');
-  modal.setAttribute('aria-hidden', 'true');
+
+function closeVslModal() {
+  if (!vslModal) return;
+  vslModal.classList.remove('open');
+  vslModal.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
-  // reset so a real iframe stops playing
-  modalVideo.innerHTML = originalVideo;
+  if (modalVideo) modalVideo.innerHTML = originalVideo;
+}
+
+function resetScheduleForm() {
+  if (scheduleFormWrap) scheduleFormWrap.classList.remove('is-submitted');
+  if (scheduleSuccess) scheduleSuccess.classList.remove('is-visible');
+  if (scheduleForm) scheduleForm.reset();
+}
+
+function openScheduleModal() {
+  if (!scheduleModal) return;
+  resetScheduleForm();
+  scheduleModal.classList.add('open');
+  scheduleModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  const firstInput = scheduleForm && scheduleForm.querySelector('input[name="name"]');
+  if (firstInput) setTimeout(() => firstInput.focus(), 120);
+}
+
+function closeScheduleModal() {
+  if (!scheduleModal) return;
+  scheduleModal.classList.remove('open');
+  scheduleModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
 }
 
 document.querySelectorAll('[data-modal-open]').forEach((el) => {
-  el.addEventListener('click', openModal);
+  el.addEventListener('click', openVslModal);
   el.addEventListener('keydown', (ev) => {
-    if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); openModal(); }
+    if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); openVslModal(); }
   });
 });
-document.querySelectorAll('[data-modal-close]').forEach((el) => el.addEventListener('click', closeModal));
-modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
 
-// ---- Booking buttons (replace href with your scheduler URL) ----
-// Set BOOKING_URL to your online scheduler; falls back to scrolling to the offer + calling.
-const BOOKING_URL = ''; // e.g. 'https://your-scheduler.com/book'
-document.querySelectorAll('[data-book]').forEach((btn) => {
-  btn.addEventListener('click', (e) => {
-    if (BOOKING_URL) { return; } // let the href (set below) handle it
-    e.preventDefault();
-    // No scheduler configured yet — guide the user to call.
-    window.location.href = 'tel:16157949155';
-  });
-  if (BOOKING_URL) { btn.setAttribute('href', BOOKING_URL); btn.setAttribute('target', '_blank'); btn.setAttribute('rel', 'noopener'); }
+document.querySelectorAll('[data-modal-close]').forEach((el) => {
+  el.addEventListener('click', closeVslModal);
 });
+
+if (vslModal) {
+  vslModal.addEventListener('click', (e) => { if (e.target === vslModal) closeVslModal(); });
+}
+
+document.querySelectorAll('[data-schedule-open]').forEach((el) => {
+  el.addEventListener('click', (e) => {
+    e.preventDefault();
+    openScheduleModal();
+  });
+});
+
+document.querySelectorAll('[data-schedule-close]').forEach((el) => {
+  el.addEventListener('click', closeScheduleModal);
+});
+
+if (scheduleModal) {
+  scheduleModal.addEventListener('click', (e) => { if (e.target === scheduleModal) closeScheduleModal(); });
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Escape') return;
+  if (scheduleModal && scheduleModal.classList.contains('open')) closeScheduleModal();
+  else if (vslModal && vslModal.classList.contains('open')) closeVslModal();
+});
+
+if (scheduleForm) {
+  scheduleForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!scheduleForm.reportValidity()) return;
+
+    const data = Object.fromEntries(new FormData(scheduleForm).entries());
+    const submitBtn = scheduleForm.querySelector('[type="submit"]');
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+    }
+
+    try {
+      if (FORM_ENDPOINT) {
+        const res = await fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(data),
+        });
+        if (!res.ok) throw new Error('Request failed');
+      }
+      scheduleFormWrap.classList.add('is-submitted');
+      scheduleSuccess.classList.add('is-visible');
+    } catch (err) {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Request My Callback';
+      }
+      alert('Something went wrong. Please call us at 615-794-9155 and we\'ll get you scheduled.');
+      return;
+    }
+
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Request My Callback';
+    }
+  });
+}
 
 // ---- Reviews embed (lazy load + auto height) ----
 const REVIEWS_EMBED_URL = 'https://reviews-widget.jeremiah-cox98.workers.dev/embed';
