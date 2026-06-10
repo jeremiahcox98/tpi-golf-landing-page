@@ -50,3 +50,38 @@ document.querySelectorAll('[data-book]').forEach((btn) => {
   });
   if (BOOKING_URL) { btn.setAttribute('href', BOOKING_URL); btn.setAttribute('target', '_blank'); btn.setAttribute('rel', 'noopener'); }
 });
+
+// ---- Reviews embed (lazy load + auto height) ----
+const REVIEWS_EMBED_URL = 'https://reviews-widget.jeremiah-cox98.workers.dev/embed';
+const reviewsIframe = document.getElementById('reviews-embed');
+
+function setReviewsIframeHeight(height) {
+  if (reviewsIframe && typeof height === 'number' && height > 0) {
+    reviewsIframe.style.height = height + 'px';
+    reviewsIframe.style.maxWidth = '100%';
+    reviewsIframe.style.overflow = 'hidden';
+  }
+}
+
+window.addEventListener('message', (e) => {
+  if (e.data && e.data.type === 'reviews-embed-height') {
+    setReviewsIframeHeight(e.data.height);
+  }
+});
+
+if (reviewsIframe) {
+  const loadReviewsEmbed = () => {
+    if (!reviewsIframe.src) reviewsIframe.src = reviewsIframe.dataset.src || REVIEWS_EMBED_URL;
+  };
+  if ('IntersectionObserver' in window) {
+    const embedIo = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        loadReviewsEmbed();
+        embedIo.disconnect();
+      }
+    }, { rootMargin: '200px 0px' });
+    embedIo.observe(reviewsIframe);
+  } else {
+    loadReviewsEmbed();
+  }
+}

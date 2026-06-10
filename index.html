@@ -334,7 +334,7 @@
 }
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden;overscroll-behavior-x:none}
 body{
   margin:0;
   font-family:var(--body);
@@ -343,6 +343,9 @@ body{
   font-size:17px;
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  overscroll-behavior-x:none;
+  max-width:100%;
 }
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
@@ -623,6 +626,9 @@ h2.title{font-size:clamp(30px,5vw,52px);font-weight:800}
 /* ============================================================
    Reviews
    ============================================================ */
+.reviews-embed{width:100%;max-width:100%;overflow:hidden;margin:0}
+.reviews-embed iframe{width:100%;max-width:100%;border:none;display:block;min-height:520px;background:var(--navy-deep);overflow:hidden}
+#results{overflow:hidden;padding:0}
 .reviews__top{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-bottom:46px}
 .gscore{display:flex;align-items:center;gap:18px}
 .gscore__g{width:50px;height:50px;border-radius:50%;background:#fff;border:1px solid var(--line);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:24px;box-shadow:var(--shadow-sm)}
@@ -823,45 +829,16 @@ h2.title{font-size:clamp(30px,5vw,52px);font-weight:800}
   </div>
 </section>
 
-<!-- ================= REVIEWS (social proof, high up) ================= -->
-<section class="section" id="results" style="background:var(--cream-2)">
-  <div class="wrap">
-    <div class="section-head center reveal" style="margin-bottom:34px">
-      <span class="eyebrow center">Real Results</span>
-      <h2 class="title">Golfers Who Move &amp; Play Better</h2>
-    </div>
-    <div class="reviews__top reveal">
-      <div class="gscore">
-        <div class="gscore__g" style="color:#4285F4">G</div>
-        <div>
-          <div style="display:flex;align-items:center;gap:12px"><span class="gscore__n">5.0</span>
-            <span class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.4 21.2 6.7 14.2l-5-4.8 7-.9z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.4 21.2 6.7 14.2l-5-4.8 7-.9z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.4 21.2 6.7 14.2l-5-4.8 7-.9z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.4 21.2 6.7 14.2l-5-4.8 7-.9z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.4 21.2 6.7 14.2l-5-4.8 7-.9z"></path></svg></span>
-          </div>
-          <small>Rated 5.0 across Google reviews</small>
-        </div>
-      </div>
-      <a class="btn btn--ghost" href="#offer">Become the next result</a>
-    </div>
-    <div class="rev-grid">
-      <article class="rev reveal">
-        <div class="rev__head"><div class="rev__av">M</div><div class="rev__who"><b>Mark T.</b><span>Franklin, TN</span></div></div>
-        <span class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.4 21.2 6.7 14.2l-5-4.8 7-.9z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.4 21.2 6.7 14.2l-5-4.8 7-.9z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.4 21.2 6.7 14.2l-5-4.8 7-.9z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.4 21.2 6.7 14.2l-5-4.8 7-.9z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.4 21.2 6.7 14.2l-5-4.8 7-.9z"></path></svg></span>
-        <p>"The TPI screen showed exactly why I was losing rotation. A few weeks into the plan and my turn feels free again — picked up real distance off the tee."</p>
-        <div class="rev__g"><svg viewBox="0 0 24 24" fill="none" stroke="#4285F4" stroke-width="2"><circle cx="12" cy="12" r="9"></circle></svg>Posted on Google</div>
-      </article>
-      <article class="rev reveal">
-        <div class="rev__head"><div class="rev__av">S</div><div class="rev__who"><b>Steve R.</b><span>Brentwood, TN</span></div></div>
-        <span class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.4 21.2 6.7 14.2l-5-4.8 7-.9z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.4 21.2 6.7 14.2l-5-4.8 7-.9z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.4 21.2 6.7 14.2l-5-4.8 7-.9z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.4 21.2 6.7 14.2l-5-4.8 7-.9z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.4 21.2 6.7 14.2l-5-4.8 7-.9z"></path></svg></span>
-        <p>"Finally someone who connected my back pain to my swing instead of just cracking my back. Dr. Cox actually plays — he gets it. I'm pain-free for 18 holes now."</p>
-        <div class="rev__g"><svg viewBox="0 0 24 24" fill="none" stroke="#4285F4" stroke-width="2"><circle cx="12" cy="12" r="9"></circle></svg>Posted on Google</div>
-      </article>
-      <article class="rev reveal">
-        <div class="rev__head"><div class="rev__av">D</div><div class="rev__who"><b>Dave K.</b><span>Nashville, TN</span></div></div>
-        <span class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.4 21.2 6.7 14.2l-5-4.8 7-.9z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.4 21.2 6.7 14.2l-5-4.8 7-.9z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.4 21.2 6.7 14.2l-5-4.8 7-.9z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.4 21.2 6.7 14.2l-5-4.8 7-.9z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.4 21.2 6.7 14.2l-5-4.8 7-.9z"></path></svg></span>
-        <p>"The two-visit process was clear and no-pressure. I knew exactly what was wrong and exactly what we were going to do about it. Best $75 I've spent on my game."</p>
-        <div class="rev__g"><svg viewBox="0 0 24 24" fill="none" stroke="#4285F4" stroke-width="2"><circle cx="12" cy="12" r="9"></circle></svg>Posted on Google</div>
-      </article>
-    </div>
+<!-- ================= REVIEWS (Google Reviews embed) ================= -->
+<section class="section" id="results" style="background:var(--navy-deep);padding:0">
+  <div class="reviews-embed reveal">
+    <iframe
+      id="reviews-embed"
+      data-src="https://reviews-widget.jeremiah-cox98.workers.dev/embed"
+      title="Google Reviews"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
   </div>
 </section>
 
