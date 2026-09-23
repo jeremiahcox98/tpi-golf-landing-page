@@ -816,6 +816,17 @@ body.has-site-bar{padding-top:52px}
   background:repeating-linear-gradient(90deg,var(--line) 0 8px,transparent 8px 16px)}
 @media(max-width:760px){.expect__row{grid-template-columns:1fr;gap:30px}.expect__row::before{display:none}}
 
+.care-may{margin-top:clamp(40px,6vw,56px);padding-top:clamp(28px,4vw,36px);border-top:1px solid var(--line);text-align:center;max-width:820px;margin-left:auto;margin-right:auto}
+.care-may__label{font-family:var(--display);font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);margin-bottom:10px}
+.care-may__lead{color:var(--muted);font-size:15px;margin:0 auto 20px;max-width:560px;text-wrap:pretty}
+.care-may__list{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 0;font-size:15px;color:var(--ink)}
+.care-may__list li{padding:0 14px;border-right:1px solid var(--line)}
+.care-may__list li:last-child{border-right:none}
+@media(max-width:560px){
+  .care-may__list{flex-direction:column;align-items:center;gap:10px}
+  .care-may__list li{border-right:none;padding:0}
+}
+
 /* ---- reveal animation ---- */
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
@@ -869,7 +880,7 @@ body.has-site-bar{padding-top:52px}
       <div class="proofbar__txt"><b>5.0 Rating</b><span>Google Reviews</span></div>
     </div>
     <div class="proofbar__item">
-      <div class="avstack"><i style="background:#3a536b">JM</i><i style="background:#6b4f31">SR</i><i style="background:#4a6b57">DK</i><i style="background:#b1894c;color:#1a1206">+</i></div>
+      <div class="avstack"><i style="background:#3a536b">TJ</i><i style="background:#6b4f31">SM</i><i style="background:#4a6b57">JC</i><i style="background:#b1894c;color:#1a1206">+</i></div>
       <div class="proofbar__txt"><b>Local Golfers</b><span>evaluated and treated</span></div>
     </div>
     <div class="proofbar__item">
@@ -905,8 +916,19 @@ body.has-site-bar{padding-top:52px}
       <div class="estep reveal">
         <div class="estep__n"><b>3</b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"></rect><path d="M9 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"></path><path d="m9 13 2 2 4-4"></path></svg></div>
         <h3>Golf Body Blueprint</h3>
-        <p>A written summary of findings and recommended next steps based on your body and goals.</p>
+        <p>A written plan for next steps based on your body and goals.</p>
       </div>
+    </div>
+    <div class="care-may reveal">
+      <p class="care-may__label">Care may include</p>
+      <p class="care-may__lead">Depending on your findings, your plan may involve one or more of the following:</p>
+      <ul class="care-may__list">
+        <li>Chiropractic adjustments</li>
+        <li>Myofascial release</li>
+        <li>TPI exercise prescription</li>
+        <li>Spinal decompression</li>
+        <li>K-Laser therapy</li>
+      </ul>
     </div>
   </div>
 </section>
