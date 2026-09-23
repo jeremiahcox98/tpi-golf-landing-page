@@ -494,12 +494,6 @@ h2.title{font-size:clamp(30px,5vw,52px);font-weight:800}
 .about__body p+p{margin-top:20px}
 .about__body .big{font-size:clamp(20px,2.4vw,26px);line-height:1.4;color:var(--navy);font-weight:500}
 .dofor{background:var(--cream-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.dofor__row{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-.dofor__item h3{font-size:20px;font-weight:800;margin:0 0 10px}
-.dofor__item p{color:var(--muted);font-size:15.5px;text-wrap:pretty}
-.dofor__item .n{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;
-  background:var(--gold);color:#1a1206;font-family:var(--display);font-weight:800;font-size:14px;margin-bottom:16px}
-@media(max-width:760px){.dofor__row{grid-template-columns:1fr;gap:26px}}
 .pkg-list{list-style:none;padding:0;margin:18px 0 0;border-top:1px solid var(--line)}
 .pkg-list li{display:flex;align-items:flex-start;gap:12px;padding:15px 0;border-bottom:1px solid var(--line);font-size:15.5px;color:var(--text);font-weight:500}
 .pkg-list li svg{flex:0 0 auto;width:20px;height:20px;color:var(--gold);margin-top:2px}
@@ -889,55 +883,27 @@ body.has-site-bar{padding-top:52px}
   </div>
 </section>
 
-<!-- ================= WHAT TO EXPECT ================= -->
-<section class="section expect" id="expect">
-  <div class="wrap">
-    <div class="section-head center reveal">
-      <span class="eyebrow center">What To Expect</span>
-      <h2 class="title">Simple From Start To Finish</h2>
-      <p class="lead">Your $175 golf evaluation — screen, exam, and your Golf Body Blueprint — so you know what's limiting your swing and what to do next.</p>
-    </div>
-    <div class="expect__row">
-      <div class="estep reveal">
-        <div class="estep__n"><b>1</b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="17" rx="2.5"></rect><path d="M3 9.5h18M8 2.5v4M16 2.5v4"></path></svg></div>
-        <h3>Request Your Spot</h3>
-        <p>Share your info and we'll call to schedule one of this week's limited evaluation spots.</p>
-      </div>
-      <div class="estep reveal">
-        <div class="estep__n"><b>2</b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.5 7 5-14 2.5 7H21"></path></svg></div>
-        <h3>Screen &amp; Exam</h3>
-        <p>Full TPI movement screen and chiropractic exam — including indicated X-rays. We test; we don't guess.</p>
-      </div>
-      <div class="estep reveal">
-        <div class="estep__n"><b>3</b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"></rect><path d="M9 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"></path><path d="m9 13 2 2 4-4"></path></svg></div>
-        <h3>Your Golf Body Blueprint</h3>
-        <p>Clear findings and a personalized plan built around your body and your game.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= WHAT WE DO ================= -->
-<section class="section dofor" id="what-we-do">
+<!-- ================= WHAT WE DO FOR GOLFERS ================= -->
+<section class="section expect dofor" id="what-we-do">
   <div class="wrap">
     <div class="section-head center reveal">
       <span class="eyebrow center">What We Do For Golfers</span>
       <h2 class="title">Built Around Your Swing — Not A Generic Visit</h2>
       <p class="lead">Everything in the $175 evaluation is designed for golfers who want to move better and play better.</p>
     </div>
-    <div class="dofor__row">
-      <div class="dofor__item reveal">
-        <span class="n">1</span>
+    <div class="expect__row">
+      <div class="estep reveal">
+        <div class="estep__n"><b>1</b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9"></path><path d="M12 3v9l6 3"></path><circle cx="12" cy="12" r="1.4" fill="currentColor"></circle></svg></div>
         <h3>TPI Screen</h3>
         <p>Golf-specific movement screening that shows how your body loads, rotates, and releases through the swing.</p>
       </div>
-      <div class="dofor__item reveal">
-        <span class="n">2</span>
+      <div class="estep reveal">
+        <div class="estep__n"><b>2</b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.5 7 5-14 2.5 7H21"></path></svg></div>
         <h3>Chiropractic Exam</h3>
         <p>A thorough clinical evaluation — including indicated X-rays — so we understand the restrictions behind your game.</p>
       </div>
-      <div class="dofor__item reveal">
-        <span class="n">3</span>
+      <div class="estep reveal">
+        <div class="estep__n"><b>3</b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"></rect><path d="M9 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"></path><path d="m9 13 2 2 4-4"></path></svg></div>
         <h3>Golf Body Blueprint</h3>
         <p>Your personalized roadmap: what's limiting you, and the corrective path to move and play with more confidence.</p>
       </div>
